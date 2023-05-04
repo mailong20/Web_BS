@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Token</title>
+</head>
+<body>
+    <h1>Access Token</h1>
+    <p id="access-token"></p>
+    <script>
+        // retrieve the access token from local storage
+        const token = localStorage.getItem("access_token");
+
+        // display the access token on the page
+        const accessTokenElement = document.getElementById("access-token");
+        accessTokenElement.innerHTML = token;
+    </script>
+</body>
+</html>

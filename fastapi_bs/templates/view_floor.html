@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ floor.floor_name }} Details</title>
+    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .mini-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .mini-slide img {
+            width: 70px;
+            height: 70px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: 2px solid #CCC;
+        }
+
+        .mini-slide img:hover {
+            border: 2px solid #007bff;
+        }
+
+        .card-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .product-image {
+            max-height: 400px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 2px solid #CCC;
+        }
+
+        .product-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 600;
+            color: #007bff;
+            margin-top: 20px;
+        }
+
+        hr {
+            border: 1px solid #CCC;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .mini-slide img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .product-image {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="product-title">{{ floor.floor_name }} Details</h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-7">
+                <img src="/static/images/{{ floor.floor_image }}" class="card-img-top product-image" alt="{{ floor.floor_name }}" id="main-img">
+            </div>
+            <div class="col-md-5">
+                <p class="card-text">{{ floor.floor_description }}</p>
+                <hr>
+                <h5 class="product-price">Price: {{ floor.floor_price }}</h5>
+            </div>
+        </div>
+        <div class="mini-slide">
+            <img src="/static/images/swaran.jpg" onclick="document.getElementById('main-img').src='/static/images/swaran.jpg'" alt="swaran">
+            <img src="/static/images/sabo.jpg" onclick="document.getElementById('main-img').src='/static/images/sabo.jpg'" alt="sabo">
+            <img src="/static/images/avadol.jpg" onclick="document.getElementById('main-img').src='/static/images/avadol.jpg'" alt="avadol">
+        </div>
+    </div>
+</body>
+</html>

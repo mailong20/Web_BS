@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of Floor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container" id="floor-list-container" style="display: none;">
+    <h1 class="my-5">List of Floor</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th colspan="2">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for floor in floor_list %}
+        <tr>
+            <td><a href="http://localhost:8000/floor/{{floor.floor_id}}">{{floor.floor_id}}</a></td>
+            <td>{{floor.floor_name}}</td>
+            <td><img src="/static/images/{{floor.floor_image}}" width="100" height="50" alt="{{floor.floor_image}}"
+                     title="{{floor.floor_image}}"></td>
+            <td>{{floor.floor_price}}</td>
+            <td>{{floor.floor_description}}</td>
+            <td>
+                <a class="btn btn-warning" href="http://localhost:8000/floor/edit/{{floor.floor_id}}">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" href="http://localhost:8000/floor/delete/{{floor.floor_id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-success" href="http://localhost:8000/createui">Create a new floor</a>
+</div>
+<script>
+    // retrieve the access_token cookie
+    const token = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('access_token='))
+        .split('=')[1];
+
+    if (token) {
+        // make GET request to the /floor endpoint using fetch()
+        fetch('http://localhost:8000/floor', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            // handle the response
+            if (response.ok) {
+                // if the response is successful, show the list_floor.html page
+                document.getElementById('floor-list-container').style.display = 'block';
+            } else {
+                // if the response is not successful, redirect to the login page
+                window.location.href = '/login';
+            }
+          })
+          .catch(error => {
+            // handle the error
+            console.error(error);
+          });
+    } else {
+        // if there is no access token in the cookie, redirect to the login page
+        window.location.href = '/login';
+    }
+</script>
+
+</body>
+</html>

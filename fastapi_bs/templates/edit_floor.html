@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Item Details</title>
+    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container w-50">
+    <div class="card text-left" style="width: 32rem;align:center;">
+        <div class="card-body">
+            <div class="card-header">
+                <h1> Edit floor </h1>
+            </div>
+            <form action="http://localhost:8000/update?id={{ floor.floor_id }}" method="post">
+                <div class="mb-3">
+                    <label for="floorId" class="form-label">Floor Id</label>
+                    <input type="text" class="form-control" id="floorId" name="floorId" value="{{floor.floor_id}}"
+                           readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="floorName" class="form-label">Floor Name</label>
+                    <input type="text" class="form-control" id="floorName" name="floorName"
+                           value="{{floor.floor_name}}">
+                </div>
+                <div class="mb-3">
+                    <label for="floorImage" class="form-label">Floor Image</label>
+                    <input type="text" class="form-control" id="floorImage" name="floorImage"
+                           value="{{floor.floor_image}}">
+                </div>
+                <div class="form-group">
+                    <label for="floorImage">Floor Price</label>
+                    <input type="text" class="form-control" id="floorPrice" name="floorPrice" placeholder="Floor Price">
+                </div>
+                <div class="mb-3">
+                    <label for="floorDescription" class="form-label">Floor Description</label>
+                    <textarea class="form-control" id="floorDescription" name="floorDescription" rows="3">{{floor.floor_description}}</textarea>
+                </div>
+
+                <input type="hidden" name="id" value="{{ floor.floor_id }}">
+                <input type="submit" class="btn btn-primary" value="Submit"> &nbsp;&nbsp;&nbsp;&nbsp;<input type="reset"
+                                                                                                            class="btn btn-danger"
+                                                                                                            value="Reset">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

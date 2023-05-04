@@ -1,0 +1,25 @@
+.text-color-red{
+    color: red;
+}
+.card {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 10px;
+}
+.navbar {
+    background-color: #f8f9fa;
+}
+.btn-primary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-primary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}
+.lead {
+    color: #6c757d;
+}
+h1 {
+    color: #6c757d;
+}
